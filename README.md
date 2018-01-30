@@ -4,8 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ##新建项目
 
-ng new ExpertBackstage
+ng new ExpertBackstage.
 
 ##依赖安装（升级）
 
-npm install --save handlebars
+npm install --save handlebars.
