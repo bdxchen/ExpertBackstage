@@ -9,3 +9,9 @@ ng new ExpertBackstage
 ## 依赖安装（升级）
 
 npm install --save handlebars
+
+npm install --save admin-lte
+
+npm install --save-dev bootstrap@3.3.7
+
+npm install --save jquery
