@@ -9,6 +9,19 @@ import { MenuComponent } from './menu/menu.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
+import { UserinfoComponent } from './userinfo/userinfo.component';
+import { Routes,RouterModule } from '@angular/router';
+import { SoccerexpertComponent } from './soccerexpert/soccerexpert.component';
+import { PaymentsComponent } from './payments/payments.component';
+import { SettingComponent } from './setting/setting.component';
+
+const routeConfig: Routes = [
+  {path: '', redirectTo: '/userinfo', pathMatch: 'full'},
+  {path: 'userinfo', component: UserinfoComponent},
+  {path: 'soccerexpert', component: SoccerexpertComponent},
+  {path: 'payments', component: PaymentsComponent},
+  {path: 'setting', component: SettingComponent}
+]
 
 @NgModule({
   declarations: [
@@ -17,12 +30,17 @@ import { ContentComponent } from './content/content.component';
     MenuComponent,
     SidebarComponent,
     FooterComponent,
-    ContentComponent
+    ContentComponent,
+    UserinfoComponent,
+    SoccerexpertComponent,
+    PaymentsComponent,
+    SettingComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(routeConfig, { useHash: true})
   ],
   providers: [],
   bootstrap: [AppComponent]
