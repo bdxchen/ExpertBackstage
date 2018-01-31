@@ -34,33 +34,40 @@
       <li class="header">HEADER</li>
       <!-- Optionally, you can add icons to the links -->
       <li class="active">
-        <a href="#">
+        <a href="javascript:;" (click)="nav('userinfo')">
           <i class="fa fa-link"></i>
-          <span>Link</span>
+          <span>专家概况</span>
         </a>
       </li>
-      <li>
-        <a href="#">
+      <li class="">
+        <a href="javascript:;" (click)="nav('soccerexpert')">
           <i class="fa fa-link"></i>
-          <span>Another Link</span>
+          <span>足球情报</span>
         </a>
       </li>
-      <li class="treeview">
-        <a href="#">
+      <li class="">
+        <a href="javascript:;" (click)="nav('soccerexpert')">
           <i class="fa fa-link"></i>
-          <span>Multilevel</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
+          <span>单关计划</span>
         </a>
-        <ul class="treeview-menu">
-          <li>
-            <a href="#">Link in level 2</a>
-          </li>
-          <li>
-            <a href="#">Link in level 2</a>
-          </li>
-        </ul>
+      </li>
+      <li class="">
+        <a href="javascript:;" (click)="nav('soccerexpert')">
+          <i class="fa fa-link"></i>
+          <span>串关计划</span>
+        </a>
+      </li>
+      <li class="">
+        <a href="javascript:;" (click)="nav('payments')">
+          <i class="fa fa-link"></i>
+          <span>账户收支</span>
+        </a>
+      </li>
+      <li class="">
+        <a href="javascript:;" (click)="nav('setting')">
+          <i class="fa fa-link"></i>
+          <span>设置</span>
+        </a>
       </li>
     </ul>
     <!-- /.sidebar-menu -->
