@@ -14,13 +14,21 @@ import { Routes,RouterModule } from '@angular/router';
 import { SoccerexpertComponent } from './soccerexpert/soccerexpert.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { SettingComponent } from './setting/setting.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 const routeConfig: Routes = [
-  {path: '', redirectTo: '/userinfo', pathMatch: 'full'},
-  {path: 'userinfo', component: UserinfoComponent},
-  {path: 'soccerexpert', component: SoccerexpertComponent},
-  {path: 'payments', component: PaymentsComponent},
-  {path: 'setting', component: SettingComponent}
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent,
+    children:[
+      {path: '', component: UserinfoComponent},
+      {path: 'userinfo', component: UserinfoComponent},
+      {path: 'soccerexpert', component: SoccerexpertComponent},
+      {path: 'payments', component: PaymentsComponent},
+      {path: 'setting', component: SettingComponent}
+    ]
+  },
+  {path: 'login', component: LoginComponent}
 ]
 
 @NgModule({
@@ -34,7 +42,9 @@ const routeConfig: Routes = [
     UserinfoComponent,
     SoccerexpertComponent,
     PaymentsComponent,
-    SettingComponent
+    SettingComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
