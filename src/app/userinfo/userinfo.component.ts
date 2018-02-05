@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Headers, Http } from '@angular/http';
-import "rxjs/Rx";
+import 'rxjs/Rx';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-userinfo',
@@ -10,22 +11,22 @@ import "rxjs/Rx";
 })
 export class UserinfoComponent implements OnInit {
 
-  dataSource:Observable<any>;
+  dataSource: Observable<any>;
 
-  stocks = []
+  stocks = [];
 
 
-  constructor(public http: Http) {
-    let myHeaders:Headers = new Headers();
-    myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiNTEzNjIzIiwicm9sZSI6IlVzZXIiLCJleHAiOjE1NDgxMjc4NzEsInZlciI6MH0=.ewByvyaVymmuhSsbW7Ns/6DZ+Zr6Cs71ouGtAaauBRU=")
-    this.dataSource = this.http.get('https://api.duoniuapp.com/v1/User/GetUserInfo', {headers: myHeaders}).map(response => response.json());
+  constructor(public httpService: HttpService, public http: Http) {
+
   }
 
   ngOnInit() {
+    const params: any = {};
+    this.dataSource = this.httpService.get('/User/GetUserInfo', params, '').map(response => response.json());
     this.dataSource.subscribe(
       data => console.log(data)
-    )
-    console.log(this.dataSource)
+    );
+
   }
 
 }

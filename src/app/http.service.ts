@@ -26,7 +26,10 @@ export class HttpService {
     if (localStorage.getItem('token')) {
       header.append('Authorization', localStorage.getItem('token'));
     }else {
-      header.append('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiNTEzNjIzIiwicm9sZSI6IlVzZXIiLCJleHAiOjE1NDgxMjc4NzEsInZlciI6MH0=.ewByvyaVymmuhSsbW7Ns/6DZ+Zr6Cs71ouGtAaauBRU=');
+      header.append('Authorization',
+      'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ' +
+      'IUzI1NiJ9.eyJuYW1lIjoiNTEzNjIzIiwicm9' +
+      'sZSI6IlVzZXIiLCJleHAiOjE1NDgxMjc4NzEsInZlciI6MH0=.ewByvyaVymmuhSsbW7Ns/6DZ+Zr6Cs71ouGtAaauBRU=');
     }
     return this.http.get(this.http_builder_url(ApiUrl + version + url, params), {headers: header});
   }
@@ -43,9 +46,4 @@ export class HttpService {
     }
     return this.http.post(ApiUrl + version + url, params, {headers: header});
   }
-
-  sdf(){
-    console.log(213)
-  }
-
 }
