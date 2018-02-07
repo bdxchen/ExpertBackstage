@@ -1,0 +1,33 @@
+.main-header .logo {
+    background: #E44949;
+    color: #fff;
+    border-bottom: 0 solid transparent;
+    height: 50px;
+}
+
+.main-header .sidebar-toggle {
+    background-color: #FFF;
+    color: #E44949
+    
+}
+
+.main-header .navbar .sidebar-toggle:hover {
+    background: #E44949;
+}
+
+.main-header .navbar {
+    background-color: #FFF;
+}
+
+
+.logo-img{
+    width: 90px;
+}
+
+.main-header .navbar .nav>li>a {
+    color: #333333;
+}
+
+.main-header li.user-header {
+    background-color: #E44949;
+}

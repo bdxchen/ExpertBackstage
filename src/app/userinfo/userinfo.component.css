@@ -1,0 +1,64 @@
+.rowbox{
+    background: #FFF;
+    padding-top: 15px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.rowbox .tit{
+    padding-left: 15px;
+    font-size: 18px;
+}
+
+.rowbox .box-blue{
+    border-top: 3px solid #4A90E2;
+    color: #4A90E2;
+    text-align: center;
+}
+
+.rowbox .box-blue .box-header{
+    color: #4A90E2;
+    text-align: center;
+}
+
+.rowbox .box-blue .box-body{
+    font-size: 25px;
+    color: #4A90E2;
+    letter-spacing: -1px;
+}
+
+.rowbox .box-red{
+    border-top: 3px solid #dd4b39;
+    color: #dd4b39;
+    text-align: center;
+}
+
+.rowbox .box-red .box-header{
+    color: #dd4b39;
+    text-align: center;
+}
+
+.rowbox .box-red .box-body{
+    font-size: 25px;
+    color: #dd4b39;
+    letter-spacing: -1px;
+}
+
+.rowbox .box-black{
+    border-top: 3px solid #333333;
+    color: #333333;
+    text-align: center;
+}
+
+.rowbox .box-black .box-header{
+    color: #333333;
+    text-align: center;
+}
+
+.rowbox .box-black .box-body{
+    font-size: 25px;
+    color: #333333;
+    letter-spacing: -1px;
+}
+
+
