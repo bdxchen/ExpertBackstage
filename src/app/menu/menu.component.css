@@ -1,0 +1,10 @@
+.sidebar-menu>li>a {
+    padding: 17px 5px 17px 16px;
+    display: block;
+}
+
+.treeview-menu>li>a {
+    padding: 10px 5px 10px 15px;
+    display: block;
+    font-size: 14px;
+}
