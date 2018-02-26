@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-soccerexpert',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SoccerexpertComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
   }
 
+  goselect() {
+    this.router.navigate(['home/selectmatch']);
+  }
 }
+

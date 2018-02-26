@@ -86,3 +86,10 @@ i{
     width: 50px;
     text-align: center;  
 }
+
+.codeimg{
+    float: right;
+    width: 91px;
+    margin-top: 7px;
+    margin-right: 10px;
+}

@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { HttpService } from './http.service';
 import { SelectmatchComponent } from './selectmatch/selectmatch.component';
+import { ImgUrlPipe } from './pipe/img-url.pipe';
 
 const routeConfig: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -49,6 +50,7 @@ const routeConfig: Routes = [
     LoginComponent,
     HomeComponent,
     SelectmatchComponent,
+    ImgUrlPipe,
   ],
   imports: [
     BrowserModule,

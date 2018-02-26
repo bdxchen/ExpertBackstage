@@ -8,12 +8,12 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public router:Router) { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
   }
 
-  nav(url:string) {
+  nav(url: string) {
     this.router.navigateByUrl(url);
   }
 

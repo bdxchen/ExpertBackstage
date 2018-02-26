@@ -4,8 +4,8 @@
     <div class="small-box bg-red">
       <div class="inner">
         <p>累计收益 （元）</p>
-        <h3>1268.32</h3>
-        <p>累计出售方案数 23</p>
+        <h3>{{BasicInfo.TotalIncome}}</h3>
+        <p>累计出售方案数 {{BasicInfo.TotalRecommendNum}}</p>
       </div>
       <div class="icon">
         <i class="fa fa-jpy"></i>
@@ -18,8 +18,8 @@
     <div class="small-box bg-orange">
       <div class="inner">
         <p>昨日收益 （元）</p>
-        <h3>26.80</h3>
-        <p>昨日售出方案 18</p>
+        <h3>{{BasicInfo.YIncome}}</h3>
+        <p>昨日售出方案 {{BasicInfo.YRecommendNum}}</p>
       </div>
       <div class="icon">
         <i class="fa fa-usd"></i>
@@ -32,8 +32,8 @@
     <div class="small-box bg-yellow">
       <div class="inner">
         <p>累计提款 （元）</p>
-        <h3>1233.32</h3>
-        <p>累计提款次数 12</p>
+        <h3>{{BasicInfo.TotalWithdrawMoney}}</h3>
+        <p>累计提款次数 {{BasicInfo.TotalWithdrawCount}}</p>
       </div>
       <div class="icon">
         <i class="fa fa-credit-card-alt"></i>
@@ -46,7 +46,7 @@
     <div class="small-box bg-aqua">
       <div class="inner">
         <p>账户余额 （元）</p>
-        <h3>26.80</h3>
+        <h3>{{BasicInfo.Coin}}</h3>
         <p>提款规则满100元提款</p>
       </div>
       <div class="icon">
@@ -58,15 +58,15 @@
 </div>
 
 
-<div class="row rowbox">
-  <p class="tit">专家状态 （计划）</p>
+<div class="row rowbox" *ngIf="SinglePlanData">
+  <p class="tit">专家状态 （单关）</p>
   <div class="col-lg-3 col-xs-6">
     <!-- small box -->
     <div class="small-box bg-green">
       <div class="inner">
         <p>百元盈利</p>
-        <h3>4327.00元</h3>
-        <p>累计推荐场次 23场</p>
+        <h3>{{SinglePlanData.Profit}}元</h3>
+        <p>累计推荐场次 {{SinglePlanData.SumEventNum}}场</p>
       </div>
     </div>
   </div>
@@ -81,7 +81,9 @@
         </div>
       </div>
       <div class="box-body">
-        2连红
+        {{SinglePlanData.CurrentRedBlackNum}}
+        <span *ngIf="SinglePlanData.CurrentRedBlack == 1">连红</span>
+        <span *ngIf="SinglePlanData.CurrentRedBlack == 2">连黑</span>
       </div>
     </div>
   </div>
@@ -96,7 +98,7 @@
         </div>
       </div>
       <div class="box-body">
-        2
+        {{SinglePlanData.MaxRedNum}}
       </div>
     </div>
   </div>
@@ -111,22 +113,82 @@
         </div>
       </div>
       <div class="box-body">
-        4
+        {{SinglePlanData.MaxBlackNum}}
       </div>
     </div>
   </div>
 </div>
 
+<div class="row rowbox" *ngIf="BothPlanData">
+  <p class="tit">专家状态 （串关）</p>
+  <div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-yellow">
+      <div class="inner">
+        <p>百元盈利</p>
+        <h3>{{BothPlanData.Profit}}元</h3>
+        <p>累计推荐场次 {{BothPlanData.SumEventNum}}场</p>
+      </div>
+    </div>
+  </div>
 
-<div class="row rowbox">
+  <div class="tips col-lg-3 col-xs-6">
+    <div class="box box-blue">
+      <div class="box-header with-border">
+        <h3 class="box-title">当前状态</h3>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="box-body">
+        {{BothPlanData.CurrentRedBlackNum}}
+        <span *ngIf="BothPlanData.CurrentRedBlack == 1">连红</span>
+        <span *ngIf="BothPlanData.CurrentRedBlack == 2">连黑</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips col-lg-3 col-xs-6">
+    <div class="box box-red">
+      <div class="box-header with-border">
+        <h3 class="box-title">长红指数</h3>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="box-body">
+        {{BothPlanData.MaxRedNum}}
+      </div>
+    </div>
+  </div>
+
+  <div class="tips col-lg-3 col-xs-6">
+    <div class="box box-black">
+      <div class="box-header with-border">
+        <h3 class="box-title">长黑指数</h3>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="box-body">
+        {{BothPlanData.MaxBlackNum}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row rowbox" *ngIf="InfoExpertData">
   <p class="tit">专家状态 （情报）</p>
   <div class="col-lg-3 col-xs-6">
     <!-- small box -->
     <div class="small-box bg-purple">
       <div class="inner">
         <p>盈利率</p>
-        <h3>27<sup style="font-size: 20px">%</sup></h3>
-        <p>累计推荐场次 27场</p>
+        <h3>{{InfoExpertData.Profit}}<sup style="font-size: 20px">%</sup></h3>
+        <p>累计推荐场次 {{InfoExpertData.SumEventNum}}场</p>
       </div>
     </div>
   </div>
@@ -142,7 +204,7 @@
         </div>
       </div>
       <div class="box-body">
-        10中5
+        {{InfoExpertData.StatisticEventNums}}中{{InfoExpertData.Hits}}
       </div>
     </div>
   </div>

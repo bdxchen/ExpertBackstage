@@ -6,3 +6,8 @@
 export const environment = {
   production: false
 };
+
+export class Api {
+  ApiUrl = 'http://apitest.duoniuapp.com/apihot/';
+  ImgUrl = 'http://apitest.duoniuapp.com/apihot';
+};

@@ -1,17 +1,18 @@
 import { Headers, Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Api } from '../environments/environment';
 
-const ApiUrl = 'https://api.duoniuapp.com/';
 
 @Injectable()
-export class HttpService {
+export class HttpService extends Api {
 
-  constructor(private http: Http) {};
-
+  constructor(private http: Http) {
+    super();
+  };
   http_builder_url(url, params) {
     url += (url.indexOf('?') !== -1) ? '' : '?';
     for (const k in params) {
-      if (params(k)) {
+      if (k) {
         url += ((url.indexOf('=') !== -1) ? '&' : '') + k + '=' + encodeURI(params[k]);
       }
     }
@@ -26,12 +27,9 @@ export class HttpService {
     if (localStorage.getItem('token')) {
       header.append('Authorization', localStorage.getItem('token'));
     }else {
-      header.append('Authorization',
-      'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ' +
-      'IUzI1NiJ9.eyJuYW1lIjoiNTEzNjIzIiwicm9' +
-      'sZSI6IlVzZXIiLCJleHAiOjE1NDgxMjc4NzEsInZlciI6MH0=.ewByvyaVymmuhSsbW7Ns/6DZ+Zr6Cs71ouGtAaauBRU=');
+      header.append('Authorization', '');
     }
-    return this.http.get(this.http_builder_url(ApiUrl + version + url, params), {headers: header});
+    return this.http.get(this.http_builder_url(this.ApiUrl + version + url, params), {headers: header});
   }
 
   post(url: string, params: any, version: string) {
@@ -44,6 +42,7 @@ export class HttpService {
     }else {
       header.append('Authorization', '');
     }
-    return this.http.post(ApiUrl + version + url, params, {headers: header});
+    return this.http.post(this.ApiUrl + version + url, params, {headers: header});
   }
+
 }

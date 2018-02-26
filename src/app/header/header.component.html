@@ -27,37 +27,32 @@
           <!-- Menu Toggle Button -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <!-- The user image in the navbar-->
-            <img src="dist/img/user2-160x160.jpg" class="user-image">
+            <img *ngIf="userinfo.Avatar" src="{{userinfo.Avatar | imgUrl}}" class="user-image">
             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-            <span class="hidden-xs">张天师</span>
+            <span class="hidden-xs">{{userinfo.NickName}}</span>
             <!-- <p class="hidden-xs">竞猜大师</p> -->
           </a>
           <ul class="dropdown-menu">
             <!-- The user image in the menu -->
             <li class="user-header">
-              <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+              <img *ngIf="userinfo.Avatar" src="{{userinfo.Avatar | imgUrl}}" class="img-circle" alt="User Image">
               <p>
-                Alexander Pierce - Web Developer
-                <small>Member since Nov. 2012</small>
+                {{userinfo.ExpLabel}}
+                <small>{{userinfo.ExpIntro}}</small>
               </p>
             </li>
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                <a href="#" class="btn btn-default btn-flat">修改密码</a>
               </div>
               <div class="pull-right">
-                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                <a href="#" class="btn btn-default btn-flat">退出登录</a>
               </div>
             </li>
           </ul>
         </li>
         <!-- Control Sidebar Toggle Button -->
-        <li>
-          <a href="#" data-toggle="control-sidebar">
-            <i class="fa fa-gears"></i>
-          </a>
-        </li>
       </ul>
     </div>
   </nav>

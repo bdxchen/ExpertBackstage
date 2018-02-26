@@ -1,3 +1,60 @@
-<p>
-  setting works!
-</p>
+<div class="row">
+  <div class="col-md-10">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">专家类型</h3>
+      </div>
+      <div class="box-body">
+        <p>
+          <button type="button" class="btn bg-maroon btn-flat margin">单关专家</button>
+          <button type="button" class="btn bg-blue btn-flat margin">串关专家</button>
+          <button type="button" class="btn bg-purple btn-flat margin">情报专家</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10">
+    <!-- Widget: user widget style 1 -->
+    <div class="box box-widget widget-user-2">
+      <!-- Add the bg color to the header using any of the bg-* classes -->
+      <div class="widget-user-header bg-yellow">
+        <div class="widget-user-image">
+          <img *ngIf="userinfo.Avatar" class="img-circle" src="{{userinfo.Avatar | imgUrl}}" alt="User Avatar">
+        </div>
+        <!-- /.widget-user-image -->
+        <h3 class="widget-user-username">{{userinfo.NickName}}</h3>
+        <h5 class="widget-user-desc">{{userinfo.ExpLabel}}</h5>
+      </div>
+      <div class="box-footer no-padding">
+        <ul class="nav nav-stacked">
+          <li><a href="javascript:;">专家昵称： {{userinfo.NickName}}</a></li>
+          <li><a href="javascript:;">账 号ID： {{userinfo.UserID}}</a></li>
+          <li><a href="javascript:;">专家称号： {{userinfo.ExpLabel}}</a></li>
+          <li><a href="javascript:;">联系电话： {{userinfo.Mobile}}</a></li>
+          <li><a href="javascript:;">联系地址： {{userinfo.Address}}</a></li>
+          <li><a href="javascript:;">店主编号： {{userinfo.ShopNo}}</a></li>
+          <li><a href="javascript:;">专家简介： {{userinfo.ExpIntro}}</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- /.widget-user -->
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">更多操作</h3>
+      </div>
+      <div class="box-body">
+        <p>
+          <button type="button" class="btn bg-maroon btn-flat margin">修改密码</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
