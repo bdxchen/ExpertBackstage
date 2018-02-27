@@ -14,6 +14,11 @@ export class SettingComponent extends Api implements OnInit {
 
   dataSource: Observable<any>;
   userinfo = [];
+  pwd: any = {
+    oldPwd: '',
+    newPwd: '',
+    two: ''
+  };
 
   constructor(public httpService: HttpService, public http: Http) {
     super();
@@ -34,5 +39,24 @@ export class SettingComponent extends Api implements OnInit {
         alert(JSON.parse(error._body).Message);
       }
     );
+  }
+
+  EditPassword() {
+    console.log(this.pwd);
+    if (this.pwd.newPwd === this.pwd.two) {
+      this.dataSource = this.httpService.get('/ExpAdmin/EditPassword', this.pwd, '').map(response => response.json());
+      this.dataSource.subscribe(
+        (data: any) => {
+          if (data === true) {
+            alert('修改成功！');
+          }
+        },
+        (error: any) => {
+          alert(JSON.parse(error._body).Message);
+        }
+      );
+    }else {
+      alert('两次密码输入不相同!')
+    }
   }
 }

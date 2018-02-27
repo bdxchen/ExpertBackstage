@@ -6,7 +6,7 @@
       </div>
       <div class="box-body">
         <p>
-          <button type="button" class="btn bg-maroon btn-flat margin">单关专家</button>
+          <button type="button" *ngIf="" class="btn bg-maroon btn-flat margin">单关专家</button>
           <button type="button" class="btn bg-blue btn-flat margin">串关专家</button>
           <button type="button" class="btn bg-purple btn-flat margin">情报专家</button>
         </p>
@@ -51,10 +51,49 @@
         <h3 class="box-title">更多操作</h3>
       </div>
       <div class="box-body">
-        <p>
-          <button type="button" class="btn bg-maroon btn-flat margin">修改密码</button>
-        </p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">修改密码</h3>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+              <form class="form-horizontal">
+                <div class="box-body">
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">旧密码</label>
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" [(ngModel)]="pwd.oldPwd" name="oldPwd" placeholder="请输入您的当前密码">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">新密码</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" [(ngModel)]="pwd.newPwd" name="pwdnew" placeholder="请输入新密码">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">重复密码</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" [(ngModel)]="pwd.two" name="pwdtwo" placeholder="再次输入新密码">
+                    </div>
+                  </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-info pull-right" (click)="EditPassword()">修改密码</button>
+                </div>
+                <!-- /.box-footer -->
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
+

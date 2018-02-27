@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     mobile: '',
     pwd: '',
     captcha: ''
-  }
+  };
 
   constructor(public httpService: HttpService, private http: Http, public router: Router) { }
 

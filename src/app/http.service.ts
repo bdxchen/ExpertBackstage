@@ -33,7 +33,7 @@ export class HttpService extends Api {
   }
 
   post(url: string, params: any, version: string) {
-    if (version === undefined) {
+    if (version === '') {
       version = 'v1';
     }
     const header: any = new Headers();
