@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { HttpService } from './http.service';
 import { SelectmatchComponent } from './selectmatch/selectmatch.component';
 import { ImgUrlPipe } from './pipe/img-url.pipe';
+import { ExpertdetailComponent } from './expertdetail/expertdetail.component';
 
 const routeConfig: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -26,10 +27,11 @@ const routeConfig: Routes = [
     children: [
       {path: '', component: UserinfoComponent},
       {path: 'userinfo', component: UserinfoComponent},
-      {path: 'soccerexpert', component: SoccerexpertComponent},
+      {path: 'soccerexpert/:type', component: SoccerexpertComponent},
       {path: 'payments', component: PaymentsComponent},
       {path: 'setting', component: SettingComponent},
-      {path: 'selectmatch', component: SelectmatchComponent}
+      {path: 'selectmatch', component: SelectmatchComponent},
+      {path: 'expertdetail/:rid', component: ExpertdetailComponent}
     ]
   },
   {path: 'login', component: LoginComponent}
@@ -51,6 +53,7 @@ const routeConfig: Routes = [
     HomeComponent,
     SelectmatchComponent,
     ImgUrlPipe,
+    ExpertdetailComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  type: any;
 
   constructor(public router: Router) { }
 
@@ -15,6 +16,10 @@ export class MenuComponent implements OnInit {
 
   nav(url: string) {
     this.router.navigateByUrl(url);
+  }
+
+  choose(type) {
+    this.type = type;
   }
 
 }

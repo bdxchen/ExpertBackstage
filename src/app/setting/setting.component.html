@@ -6,9 +6,9 @@
       </div>
       <div class="box-body">
         <p>
-          <button type="button" *ngIf="" class="btn bg-maroon btn-flat margin">单关专家</button>
-          <button type="button" class="btn bg-blue btn-flat margin">串关专家</button>
-          <button type="button" class="btn bg-purple btn-flat margin">情报专家</button>
+          <button type="button" *ngIf="usertype.single == 1" class="btn bg-maroon btn-flat margin">单关专家</button>
+          <button type="button" *ngIf="usertype.both == 1" class="btn bg-blue btn-flat margin">串关专家</button>
+          <button type="button" *ngIf="usertype.info == 1" class="btn bg-purple btn-flat margin">情报专家</button>
         </p>
       </div>
     </div>
@@ -26,7 +26,7 @@
         </div>
         <!-- /.widget-user-image -->
         <h3 class="widget-user-username">{{userinfo.NickName}}</h3>
-        <h5 class="widget-user-desc">{{userinfo.ExpLabel}}</h5>
+        <h5 class="widget-user-desc">{{userinfo.ExpLabel}}.</h5>
       </div>
       <div class="box-footer no-padding">
         <ul class="nav nav-stacked">

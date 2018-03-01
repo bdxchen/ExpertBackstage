@@ -14,6 +14,7 @@ export class SettingComponent extends Api implements OnInit {
 
   dataSource: Observable<any>;
   userinfo = [];
+  usertype = [];
   pwd: any = {
     oldPwd: '',
     newPwd: '',
@@ -34,6 +35,7 @@ export class SettingComponent extends Api implements OnInit {
       (data: any) => {
         console.log(data);
         this.userinfo = data;
+        this.usertype = data.ExpTypeDic;
       },
       (error: any) => {
         alert(JSON.parse(error._body).Message);

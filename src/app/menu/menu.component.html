@@ -6,32 +6,32 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">HEADER</li>
       <!-- Optionally, you can add icons to the links -->
-      <li class="active">
-        <a href="javascript:;" routerLink="./userinfo">
+      <li [ngClass]="{'active': type == 1}">
+        <a href="javascript:;" (click)="choose(1)" routerLink="./userinfo">
           <i class="fa fa-home"></i>
           <span>专家概况</span>
         </a>
       </li>
-      <li class="treeview">
+      <li [ngClass]="{'active': type == 2||type == 3||type == 4}" class="treeview">
         <a href="#"><i class="fa fa-th-list"></i> <span>足球情报</span>
           <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#" href="javascript:;" routerLink="./soccerexpert">足球情报</a></li>
-          <li><a href="#" href="javascript:;" routerLink="./soccerexpert">单关计划</a></li>
-          <li><a href="#" href="javascript:;" routerLink="./soccerexpert">串关计划</a></li>
+          <li [ngClass]="{'active': type == 2}"><a href="#" href="javascript:;" (click)="choose(2)" routerLink="./soccerexpert/1">单关计划</a></li>
+          <li [ngClass]="{'active': type == 3}"><a href="#" href="javascript:;" (click)="choose(3)" routerLink="./soccerexpert/2">串关计划</a></li>
+          <li [ngClass]="{'active': type == 4}"><a href="#" href="javascript:;" (click)="choose(4)" routerLink="./soccerexpert/3">足球情报</a></li>
         </ul>
       </li>
-      <li class="">
-        <a href="javascript:;" routerLink="./payments">
+      <li [ngClass]="{'active': type == 5}">
+        <a href="javascript:;" (click)="choose(5)" routerLink="./payments">
           <i class="fa fa-credit-card"></i>
           <span>账户收支</span>
         </a>
       </li>
-      <li class="">
-        <a href="javascript:;" routerLink="./setting">
+      <li [ngClass]="{'active': type == 6}">
+        <a href="javascript:;" (click)="choose(6)" routerLink="./setting">
           <i class="fa fa-cog"></i>
           <span>设置</span>
         </a>
