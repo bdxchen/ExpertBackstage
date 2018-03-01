@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
   // 获取验证码图片
   getguid() {
     function S4() {
+      // tslint:disable-next-line:no-bitwise
       return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
     }
     const guid = (S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4());
@@ -69,7 +70,7 @@ export class LoginComponent implements OnInit {
         (data: any) => {
           localStorage.setItem('token', 'Bearer ' + data.Token);
           localStorage.setItem('userInfo', JSON.stringify(data));
-          this.router.navigate(['home']);
+          this.router.navigate(['home/userinfo']);
         },
         (error: any) => {
           alert(JSON.parse(error._body).Message);

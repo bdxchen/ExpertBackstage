@@ -10,4 +10,6 @@ export const environment = {
 export class Api {
   ApiUrl = 'http://apitest.duoniuapp.com/apihot/';
   ImgUrl = 'http://apitest.duoniuapp.com/apihot';
-};
+
+// tslint:disable-next-line:eofline
+}
