@@ -37,7 +37,6 @@ export class SoccerexpertComponent implements OnInit {
   }
 
   goselect(data) {
-    console.log(data)
     this.router.navigate(['home/expertdetail/' + data.RID]);
   }
 
@@ -61,6 +60,7 @@ export class SoccerexpertComponent implements OnInit {
     const size  = this.params.pageSize;
     const icur = this.icur;
     this.num = Math.ceil( total / size );
+    // tslint:disable-next-line:triple-equals
     if (this.pageList == '') {
       for ( let i = 0 ; i <  this.num ; i++ ) {
         if (i < 5) {
