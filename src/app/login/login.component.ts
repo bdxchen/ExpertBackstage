@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.newUser();
     this.getguid();
-
+    localStorage.setItem('reloadnum', '0');
   }
 
   // 生成游客

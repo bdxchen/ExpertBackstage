@@ -12,8 +12,12 @@ export class MenuComponent implements OnInit {
   constructor(public router: Router) { }
 
   ngOnInit() {
+    const reloadnum = parseInt(localStorage.getItem('reloadnum'), 10);
+    if (reloadnum < 1) {
+      localStorage.setItem('reloadnum', JSON.stringify(reloadnum + 1));
+      location.reload();
+    }
   }
-
   nav(url: string) {
     this.router.navigateByUrl(url);
   }
