@@ -20,6 +20,7 @@ import { HttpService } from './http.service';
 import { SelectmatchComponent } from './selectmatch/selectmatch.component';
 import { ImgUrlPipe } from './pipe/img-url.pipe';
 import { ExpertdetailComponent } from './expertdetail/expertdetail.component';
+import { ReleaseComponent } from './release/release.component';
 
 const routeConfig: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -31,7 +32,8 @@ const routeConfig: Routes = [
       {path: 'payments', component: PaymentsComponent},
       {path: 'setting', component: SettingComponent},
       {path: 'selectmatch', component: SelectmatchComponent},
-      {path: 'expertdetail/:rid', component: ExpertdetailComponent}
+      {path: 'expertdetail/:rid', component: ExpertdetailComponent},
+      {path: 'release/:ExpType', component: ReleaseComponent}
     ]
   },
   {path: 'login', component: LoginComponent}
@@ -54,6 +56,7 @@ const routeConfig: Routes = [
     SelectmatchComponent,
     ImgUrlPipe,
     ExpertdetailComponent,
+    ReleaseComponent,
   ],
   imports: [
     BrowserModule,

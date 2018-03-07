@@ -1,0 +1,53 @@
+<div class="_row">
+    <div class="col _right">
+      <div class="select">
+        <h4>已选择比赛</h4>
+        <a href="javascript:;" (click)="backGo()">返回修改</a>
+      </div>
+      <div class="list">
+        <div class="item" *ngFor="let item of ExpList" >
+          <div class="title">
+            <p>{{item.CompetitionName}}</p>
+            <a href="javascript:;">{{item.HomeTeamName}} VS {{item.AwayTeamName}}</a>
+            <span>{{item.EventDateFormat}}</span>
+          </div>
+        </div>
+        <!-- <div class="item">玩法：{{OutcomeName}}</div> -->
+        <div class="item">选项：<span *ngFor="let item of PublishRecommendEvents; index as i">{{item.SubTypeName}}/{{item.Odds}}<b *ngIf="i<Plen-1">, </b></span></div>
+        <div class="item" *ngIf="(Parameters.ExpType==1||Parameters.ExpType==2)&&GetInputCoinBoolean">
+            计划金额：<input type="text" placeholder="计划金额{{GetInputCoin.ExpertTypeInfo.NormalMin}}~{{GetInputCoin.ExpertTypeInfo.NormalMax}}之间" [(ngModel)]="Parameters.CanBettingBean" *ngIf="GetInputCoin.IsNeedEdit" />
+            <input type="text" [(ngModel)]="Parameters.CanBettingBean" disabled="disabled" *ngIf="!GetInputCoin.IsNeedEdit" />
+        </div>
+        <div class="item">
+          标　　题：<input type="text" placeholder="标题" style="width:50%;" [(ngModel)]="Parameters.Title" />
+        </div>
+        <div class="item">
+          <span style="float:left;">推荐内容：</span><textarea placeholder="推荐内容" [(ngModel)]="Parameters.Content"></textarea>
+        </div>
+        <div class="item">
+          <span style="float:left;">添加图片：</span>
+          <div style="float:left;position:relative;width:550px;height:100px;overflow:hidden;">
+            <div *ngFor="let img of ImgArr[0]; index as i" style="width:100px;height:100px;float:left;position:relative;margin-right:10px;display:inline;">
+              <div style="position:absolute;width:20px;height:20px;color:#fff;background:#E44949;border-radius:20px;-webkit-border-radius:20px;border:1px solid #fff;text-align:center;line-height:20px;font-size:12px;right:2px;top:2px;cursor:pointer;" (click)="del(i)">一</div>
+              <img src="{{img}}" style="width:100px;height:100px;" />
+            </div>
+            <div style="width:100px;height:100px;float:left;position:relative;">
+              <div style="width:98px;height:98px;border:1px solid #999;font-size:50px;text-align:center;line-height:100px;color:#999;background:#f0f0f0;position:absolute;">+</div>
+              <input type="file" name="file" accept="image/*" (change)="updateImg($event)"  style="width:100px;height:100px;border:0;opacity:0;position:absolute;z-index:1;cursor:pointer;"/>
+            </div>
+          </div>
+          <div style="clear:both;"></div>
+        </div>
+        <div class="item" *ngIf="GetInputCoinBoolean">
+          <select (change)="select($event)" style="height:28px;display:inline-block;border:1px solid #ccc;float:left;margin-right:10px;">
+            <option value="1">免费</option>
+            <option value="2">普通</option>
+            <option value="3">包中</option>
+          </select>
+          <input type="text" [(ngModel)]="Parameters.Money" disabled="disabled" *ngIf="Parameters.RType==1" />
+          <input type="text" [(ngModel)]="Parameters.Money" placeholder="售价{{GetInputCoin.ExpertTypeInfo.BwinMin}}~{{GetInputCoin.ExpertTypeInfo.BwinMax}}之间" *ngIf="Parameters.RType!=1" /><font style="color:#666;margin-left:5px;" *ngIf="Parameters.RType!=1">售价{{GetInputCoin.ExpertTypeInfo.BwinMin}}~{{GetInputCoin.ExpertTypeInfo.BwinMax}}之间</font>
+        </div>
+      </div>
+      <div class="sub on" (click)="sub()">发布</div>
+    </div>
+  </div>

@@ -1,67 +1,89 @@
-<div class="col-md-5">
-  <div class="box box-primary">
-    <div class="box-header with-border">
-      <h3 class="box-title">比赛选择</h3>
-
-      <div class="box-tools pull-right">
-        <div class="has-feedback">
-          <input type="text" class="form-control input-sm" placeholder="搜索比赛">
-          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+<div class="_row" style="background:#fff;">
+    <div class="col _left">
+      <div class="sou">
+        <input type="text" class="input" /><button type="button" class="button">搜索</button>
+      </div>
+      <div class="date">
+        <p>日期：</p>
+        <a href="javascript:;" [ngClass]="{'0':'on'}[tabIndex]" (click)="tabs(0)">全部</a>
+        <a href="javascript:;" [ngClass]="{'1':'on'}[tabIndex]" (click)="tabs(1)">今天</a>
+        <a href="javascript:;" [ngClass]="{'2':'on'}[tabIndex]" (click)="tabs(2)">明天</a>
+        <a href="javascript:;" [ngClass]="{'3':'on'}[tabIndex]" (click)="tabs(3)">其他</a>
+      </div>
+      <div class="list">
+        <div class="item" *ngFor="let item of listArr">
+          <p>{{item.CompetitionName}}</p>
+          <a href="javascript:;">{{item.HomeTeamName}} VS {{item.AwayTeamName}}</a>
+          <span>{{item.EventDateFormat}}</span>
+          <b (click)="selectItem(item)" [ngClass]="{false:'on'}[item.IsCheck]">+</b>
         </div>
       </div>
-      <!-- /.box-tools -->
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body no-padding">
-      <div class="table-responsive mailbox-messages">
-        <table class="table table-hover table-striped">
-          <tbody>
-            <tr>
-              <td>墨西联</td>
-              <td>莫斯科中央陆军VS鲁安图斯诺</td>
-              <td>11/30 14:00</td>
-              <td>+</td>
-            </tr>
-            <tr>
-              <td>墨西联</td>
-              <td>莫斯科中央陆军VS鲁安图斯诺</td>
-              <td>11/30 14:00</td>
-              <td>+</td>
-            </tr><tr>
-              <td>墨西联</td>
-              <td>莫斯科中央陆军VS鲁安图斯诺</td>
-              <td>11/30 14:00</td>
-              <td>+</td>
-            </tr><tr>
-              <td>墨西联</td>
-              <td>莫斯科中央陆军VS鲁安图斯诺</td>
-              <td>11/30 14:00</td>
-              <td>+</td>
-            </tr><tr>
-              <td>墨西联</td>
-              <td>莫斯科中央陆军VS鲁安图斯诺</td>
-              <td>11/30 14:00</td>
-              <td>+</td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- /.table -->
+      <div class="page" *ngIf="total>0">
+        <a href="javascript:;" (click)="previous()" [ngClass]="{true:'on'}[data.pageIndex>1]">上一页</a>&nbsp;&nbsp;
+        <a href="javascript:;" (click)="next()" [ngClass]="{true:'on'}[data.pageIndex<=total]">下一页</a>
       </div>
-      <!-- /.mail-box-messages -->
     </div>
-    <!-- /.box-body -->
-    <div class="box-footer no-padding">
-      <div class="mailbox-controls">
-        <div class="pull-right">
-          <div class="btn-group">
-            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+    <div class="col _right">
+      <div class="select">
+        <h4>已选择比赛</h4>
+        <a href="javascript:;" (click)="del()" *ngIf="typeNum>0">删除全部</a>
+      </div>
+      <div class="list">
+        <div class="item" *ngFor="let data of selectArr; index as a">
+          <div class="title">
+            <p>{{data.list.CompetitionName}}</p>
+            <a href="javascript:;">{{data.list.HomeTeamName}} VS {{data.list.AwayTeamName}}</a>
+            <span>{{data.list.EventDateFormat}}</span>
           </div>
-          <!-- /.btn-group -->
+          <!-- <div class="select1">
+            <span>选择玩法</span>
+            <div>
+              <a href="javascript:;" *ngFor="let play of data.play; index as i" [ngClass]="{true:'on'}[play.IsCheck]" (click)="playClick(play,a,i)">{{play.OutcomeName}}</a>
+            </div>
+          </div> -->
+          <div *ngFor="let play of data.play; index as i" style="margin:0;">
+            <div *ngIf="play.OutcomeType == 1">
+              <dl style="width:25%;">
+                <dt style="width:100%">让球</dt>
+                <dd style="width:100%">0</dd>
+                <dd style="width:100%" *ngIf="play.BettingOffers.length>3">-1</dd>
+              </dl>
+              <dl style="width:75%;">
+                  <dt style="width:33.3%;">胜</dt>
+                  <dt style="width:33.3%;">平</dt>
+                  <dt style="width:33.3%;">负</dt>
+                  <dd style="width:33.3%;" *ngFor="let p of play.BettingOffers; index as c" (click)="wan(p,a,i,c,'',play.OutcomeType)" [ngClass]="{true:'on'}[p.IsCheck]" ><img src="https://client.duoniuapp.com/www/img/canvas/angle_no.png" *ngIf="p.State" />{{p.Odds}}</dd>
+              </dl>
+            </div>
+            <dl *ngIf="play.OutcomeType == 2">
+              <dt style="width:33.3%;">大球</dt>
+              <dt style="width:33.3%;">盘口</dt>
+              <dt style="width:33.3%;">小球</dt>
+              <div *ngFor="let p of play.BettingOffers; index as c">
+                <dd style="width:33.3%;" (click)="wan(p.da,a,i,c,'d',play.OutcomeType)" [ngClass]="{true:'on'}[p.da.IsCheck]"><img src="https://client.duoniuapp.com/www/img/canvas/angle_no.png" *ngIf="p.da.State" />{{p.da.Odds}}</dd>
+                <dd style="width:33.3%;">{{p.pan}}</dd>
+                <dd style="width:33.3%;" (click)="wan(p.xiao,a,i,c,'x',play.OutcomeType)" [ngClass]="{true:'on'}[p.xiao.IsCheck]"><img src="https://client.duoniuapp.com/www/img/canvas/angle_no.png" *ngIf="p.xiao.State" />{{p.xiao.Odds}}</dd>
+              </div>
+            </dl>
+            <dl *ngIf="play.OutcomeType == 3">
+              <dt style="width:33.3%;">主胜</dt>
+              <dt style="width:33.3%;">盘口</dt>
+              <dt style="width:33.3%;">客胜</dt>
+              <div *ngFor="let p of play.BettingOffers; index as c">
+                <dd style="width:33.3%;" (click)="wan(p.da,a,i,c,'d',play.OutcomeType)" [ngClass]="{true:'on'}[p.da.IsCheck]"><img src="https://client.duoniuapp.com/www/img/canvas/angle_no.png" *ngIf="p.da.State" />{{p.da.Odds}}</dd>
+                <dd style="width:33.3%;">{{p.pan}}</dd>
+                <dd style="width:33.3%;" (click)="wan(p.xiao,a,i,c,'x',play.OutcomeType)" [ngClass]="{true:'on'}[p.xiao.IsCheck]"><img src="https://client.duoniuapp.com/www/img/canvas/angle_no.png" *ngIf="p.xiao.State" />{{p.xiao.Odds}}</dd>
+              </div>
+            </dl>
+            <dl *ngIf="play.OutcomeType == 4">
+              <dd  *ngFor="let p of play.BettingOffers; index as c" (click)="wan(p,a,i,c,'',play.OutcomeType)" [ngClass]="{true:'on'}[p.IsCheck]"><img src="https://client.duoniuapp.com/www/img/canvas/angle_no.png" *ngIf="p.State" />{{p.SubTypeName}}<br>{{p.Odds}}</dd>
+            </dl>
+            <dl *ngIf="play.OutcomeType == 5">
+              <dd  *ngFor="let p of play.BettingOffers; index as c" (click)="wan(p,a,i,c,'',play.OutcomeType)" [ngClass]="{true:'on'}[p.IsCheck]"><img src="https://client.duoniuapp.com/www/img/canvas/angle_no.png" *ngIf="p.State" />{{p.SubTypeName}}<br>{{p.Odds}}</dd>
+            </dl>
+          </div>
         </div>
-        <!-- /.pull-right -->
       </div>
+      <div class="sub" [ngClass]="{true:'on'}[selectOk]" (click)="sub()" *ngIf="typeNum>0">我选好了</div>
     </div>
   </div>
-  <!-- /. box -->
-</div>
